@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali | AI & Automation Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#070709',
+                            dark: '#0e0e13',
+                            card: '#14141c',
+                            border: '#22222e',
+                            orange: '#FF6B00',
+                            amber: '#FF8800',
+                            glow: 'rgba(255, 107, 0, 0.4)'
+                        }
+                    },
+                    boxShadow: {
+                        'neon': '0 0 25px rgba(255, 107, 0, 0.35)',
+                        'neon-lg': '0 0 50px rgba(255, 107, 0, 0.5)',
+                        'card-glow': '0 10px 30px -10px rgba(255, 107, 0, 0.15)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 5s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 2.5s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glowPulse: {
+                            '0%': { 'box-shadow': '0 0 15px rgba(255, 107, 0, 0.3)' },
+                            '100%': { 'box-shadow': '0 0 35px rgba(255, 136, 0, 0.7)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #070709;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 28, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(18, 18, 25, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 107, 0, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(255, 107, 0, 0.2);
+        }
+        .orange-gradient-text {
+            background: linear-gradient(135deg, #FF8800 0%, #FF6B00 50%, #FF3D00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-size: 36px 36px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+        .node-pulse-orange {
+            box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.8);
+            animation: pulsingOrange 1.8s infinite;
+        }
+        @keyframes pulsingOrange {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.8); }
+            70% { box-shadow: 0 0 0 14px rgba(255, 107, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern selection:bg-brand-orange selection:text-black">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 glass-panel rounded-b-2xl mt-0 px-6 border-b border-brand-orange/20">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-brand-amber flex items-center justify-center text-black font-extrabold text-xl shadow-neon group-hover:scale-105 transition-transform">
+                        A
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-xl tracking-tight text-white">ALI</span>
+                        <span class="text-[10px] block text-brand-orange font-mono tracking-widest uppercase font-bold">AI ARCHITECT</span>
+                    </div>
+                </a>
+
+                <!-- Nav Navigation -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                    <a href="#about" class="hover:text-brand-orange transition-colors">About</a>
+                    <a href="#projects" class="hover:text-brand-orange transition-colors">Live Systems</a>
+                    <a href="#roi-calculator" class="hover:text-brand-orange transition-colors">ROI Calculator</a>
+                    <a href="#simulator" class="hover:text-brand-orange transition-colors">Workflow Visualizer</a>
+                    <a href="#tech" class="hover:text-brand-orange transition-colors">Tech Stack</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="https://wa.me/923290233782" target="_blank" class="px-4 py-2.5 rounded-xl glass-card border-brand-orange/40 text-brand-orange hover:bg-brand-orange/10 font-mono text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>+92 329 0233782</span>
+                    </a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber text-black font-extrabold text-xs uppercase tracking-wider hover:shadow-neon hover:scale-105 transition-all flex items-center gap-2">
+                        <span>Book AI Audit</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Button -->
+                <button class="md:hidden text-gray-300 hover:text-brand-orange text-2xl focus:outline-none" id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div class="hidden md:hidden glass-panel border-t border-brand-orange/20 px-6 py-6 space-y-4 max-w-7xl mx-auto rounded-b-2xl" id="mobile-menu">
+            <a href="#about" class="block text-gray-300 hover:text-brand-orange font-medium py-2">About</a>
+            <a href="#projects" class="block text-gray-300 hover:text-brand-orange font-medium py-2">Live Systems</a>
+            <a href="#roi-calculator" class="block text-gray-300 hover:text-brand-orange font-medium py-2">ROI Calculator</a>
+            <a href="#simulator" class="block text-gray-300 hover:text-brand-orange font-medium py-2">Workflow Visualizer</a>
+            <a href="#tech" class="block text-gray-300 hover:text-brand-orange font-medium py-2">Tech Stack</a>
+            <a href="https://wa.me/923290233782" target="_blank" class="block text-emerald-400 font-bold py-2"><i class="fa-brands fa-whatsapp mr-1"></i> +92 329 0233782</a>
+            <a href="#contact" class="block text-brand-orange font-bold py-2">Book AI Audit <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        <!-- Glow Backdrop -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-brand-orange/15 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column: Intro -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-orange/40 text-brand-orange text-xs font-mono tracking-wider">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-orange node-pulse-orange"></span>
+                        SYSTEM ACTIVE & ACCEPTING NEW PROJECTS
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-white">
+                        AI & Workflow <br>
+                        <span class="orange-gradient-text">Automation Architect</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+                        Hi, I'm <strong class="text-white font-semibold">Ali</strong>. I engineer high-scale AI Agents, n8n/Make automation pipelines, and instant WhatsApp business triggers that eliminate manual labor and boost revenue.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <a href="#projects" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber font-extrabold text-black shadow-neon hover:scale-105 transition-all flex items-center gap-3">
+                            <i class="fa-solid fa-diagram-project"></i> Explore Live Workflows
+                        </a>
+                        <a href="#roi-calculator" class="px-8 py-4 rounded-xl glass-card font-semibold text-gray-200 hover:text-white hover:border-brand-orange/50 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-calculator text-brand-orange"></i> Calculate ROI
+                        </a>
+                    </div>
+
+                    <!-- Verified Hero Quick Stats -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-800/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">99.8%</div>
+                            <div class="text-xs text-gray-400 mt-1">Accuracy Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-orange font-mono">100+</div>
+                            <div class="text-xs text-gray-400 mt-1">Workflows Deployed</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-amber font-mono">500+ hrs</div>
+                            <div class="text-xs text-gray-400 mt-1">Saved / Month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Profile Image with Neon Frame -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <div class="relative w-72 h-80 sm:w-80 sm:h-96 md:w-96 md:h-[430px] group">
+                        
+                        <!-- Glowing Animated Outer Ring -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-orange via-orange-600 to-amber-500 rounded-3xl blur-md opacity-80 group-hover:opacity-100 transition duration-500 animate-glow-pulse"></div>
+                        
+                        <!-- Main Frame Container -->
+                        <div class="relative w-full h-full rounded-3xl overflow-hidden glass-panel p-2 border-2 border-brand-orange/60 bg-brand-black">
+                            
+                            <!-- Embedded Profile Photo -->
+                            <img src="WhatsApp Image 2026-10-15 at 2.52.49 PM.jpeg" 
+                                 onerror="this.src='https://placehold.co/400x500/121218/FF6B00?text=Ali+AI+Architect'" 
+                                 alt="Ali - AI Automation Specialist" 
+                                 class="w-full h-full object-cover object-top rounded-2xl filter contrast-[1.05]">
+
+                            <!-- Cyber Floating Status Overlay -->
+                            <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl glass-panel border border-brand-orange/40 backdrop-blur-md shadow-2xl flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-brand-orange node-pulse-orange"></div>
+                                    <div>
+                                        <p class="text-[10px] text-gray-400 font-mono">AVAILABILITY</p>
+                                        <p class="text-xs font-bold text-white">Open for Custom AI Systems</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-microchip text-brand-orange text-lg"></i>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tech Tags -->
+                        <div class="absolute -top-4 -left-4 px-3.5 py-1.5 rounded-xl glass-card border border-brand-orange/50 text-brand-orange text-xs font-mono shadow-neon animate-float">
+                            <i class="fa-solid fa-bolt mr-1"></i> n8n Specialist
+                        </div>
+                        <div class="absolute top-1/2 -right-6 px-3.5 py-1.5 rounded-xl glass-card border border-brand-amber/50 text-brand-amber text-xs font-mono shadow-lg animate-float" style="animation-delay: 2s;">
+                            <i class="fa-solid fa-brain mr-1"></i> OpenAI / LLMs
+                        </div>
+                        <div class="absolute -bottom-4 -left-2 px-3.5 py-1.5 rounded-xl glass-card border border-orange-500/50 text-orange-400 text-xs font-mono shadow-lg animate-float" style="animation-delay: 3.5s;">
+                            <i class="fa-brands fa-whatsapp mr-1"></i> Meta Cloud API
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Value proposition Grid -->
+    <section id="about" class="py-16 border-y border-gray-800/80 bg-brand-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="glass-card p-8 rounded-2xl border-gray-800 hover:border-brand-orange/50">
+                    <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange text-2xl mb-6">
+                        <i class="fa-solid fa-sitemap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Custom Workflow Architecture</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        I build custom backend flowcharts in n8n and Make that cleanly map to your operational needs without expensive middleware fees.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-gray-800 hover:border-brand-orange/50">
+                    <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange text-2xl mb-6">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Autonomous AI Agents</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Embedding GPT-4o, Claude 3.5, and Vector Search to create self-thinking digital workers that qualify leads and resolve support tickets.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border-gray-800 hover:border-brand-orange/50">
+                    <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange text-2xl mb-6">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Instant WhatsApp Triggers</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sub-second WhatsApp messaging for Shopify sales, order notifications, and payment reminders via Meta Official API.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Live Systems Section -->
+    <section id="projects" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs font-mono uppercase tracking-wider">
+                    PRODUCTION-READY AUTOMATIONS
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                    Featured Systems & <span class="orange-gradient-text">Case Studies</span>
+                </h2>
+                <p class="text-gray-400 text-base">
+                    Real-world architectures engineered to solve actual business revenue bottlenecks.
+                </p>
+            </div>
+
+            <!-- FLAGSHIP PROJECT 1: SHOPIFY INSTANT WHATSAPP AUTOMATION (FROM DEMO VIDEO) -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border-2 border-brand-orange/40 mb-16 relative overflow-hidden shadow-card-glow">
+                
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-brand-orange to-brand-amber text-black font-extrabold text-xs uppercase px-6 py-1.5 rounded-bl-xl tracking-wider shadow-lg">
+                    <i class="fa-solid fa-video mr-1"></i> Video Demo Case Study
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Column: Detailed Logic & Breakdown -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold text-sm">01</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Shopify Auto WhatsApp Order System</h3>
+                        </div>
+
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            <strong class="text-white">The Problem:</strong> E-commerce stores lose orders due to slow manual confirmation over COD orders. Manual Google Sheets logging creates order dispatch chaos.
+                        </p>
+
+                        <!-- Video Logic Step Breakdown Diagram -->
+                        <div class="p-5 rounded-2xl bg-brand-black border border-gray-800 space-y-4">
+                            <p class="text-xs font-mono text-brand-orange uppercase tracking-widest flex items-center gap-2 font-bold">
+                                <i class="fa-solid fa-network-wired"></i> Workflow Architecture (n8n Engine)
+                            </p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-gray-800 flex items-center gap-3">
+                                    <i class="fa-brands fa-shopify text-emerald-400 text-lg"></i>
+                                    <div>
+                                        <div class="font-bold text-white">1. Order Webhook</div>
+                                        <div class="text-[11px] text-gray-500">Real-time Shopify trigger</div>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-brand-dark border border-gray-800 flex items-center gap-3">
+                                    <i class="fa-solid fa-code text-brand-orange text-lg"></i>
+                                    <div>
+                                        <div class="font-bold text-white">2. Extract Order Details</div>
+                                        <div class="text-[11px] text-gray-500">Parse items, name, price</div>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-brand-dark border border-gray-800 flex items-center gap-3">
+                                    <i class="fa-solid fa-file-excel text-emerald-500 text-lg"></i>
+                                    <div>
+                                        <div class="font-bold text-white">3. Google Sheets Log</div>
+                                        <div class="text-[11px] text-gray-500">Auto append row audit</div>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-brand-dark border border-gray-800 flex items-center gap-3">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                                    <div>
+                                        <div class="font-bold text-white">4. Instant WhatsApp API</div>
+                                        <div class="text-[11px] text-gray-500">Auto order confirmation</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Impact Metrics -->
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="p-3 rounded-xl glass-card border-gray-800 text-center">
+                                <div class="text-lg sm:text-xl font-mono font-bold text-brand-orange">0%</div>
+                                <div class="text-[11px] text-gray-400">Order Cancellation</div>
+                            </div>
+                            <div class="p-3 rounded-xl glass-card border-gray-800 text-center">
+                                <div class="text-lg sm:text-xl font-mono font-bold text-emerald-400">&lt; 2 sec</div>
+                                <div class="text-[11px] text-gray-400">Response Speed</div>
+                            </div>
+                            <div class="p-3 rounded-xl glass-card border-gray-800 text-center">
+                                <div class="text-lg sm:text-xl font-mono font-bold text-brand-amber">4 hrs/day</div>
+                                <div class="text-[11px] text-gray-400">Time Saved</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Simulated Live Console Frame -->
+                    <div class="lg:col-span-5">
+                        <div class="rounded-2xl overflow-hidden border border-brand-orange/30 bg-brand-black shadow-2xl">
+                            <div class="bg-brand-dark px-4 py-3 flex items-center justify-between border-b border-gray-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                                </div>
+                                <span class="text-xs font-mono text-gray-400"><i class="fa-solid fa-terminal text-brand-orange mr-1"></i> n8n_shopify_engine.log</span>
+                                <span class="text-xs text-brand-orange font-mono"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> RUNNING</span>
+                            </div>
+
+                            <div class="p-5 font-mono text-xs space-y-3 min-h-[290px] flex flex-col justify-between" id="shopify-demo-console">
+                                <div class="space-y-2">
+                                    <div class="text-gray-500">// Simulating incoming Shopify Order Webhook...</div>
+                                    <div class="text-brand-orange">[18:22:01] Webhook Event Received: Order #2041</div>
+                                    <div class="text-gray-300">[18:22:01] Extracted: Ali (0300-XXXXXXX) | Total: PKR 8,500</div>
+                                    <div class="text-emerald-400">[18:22:02] Logged to Google Sheet: "Daily_Orders_2026"</div>
+                                    <div class="text-brand-amber font-bold">[18:22:02] WhatsApp Meta API: Confirmation Sent!</div>
+                                </div>
+
+                                <div class="pt-4 border-t border-gray-800">
+                                    <button onclick="triggerShopifyDemo()" class="w-full py-3 rounded-xl bg-brand-orange/20 hover:bg-brand-orange/30 border border-brand-orange/50 text-brand-orange font-bold transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-play"></i> Simulate Order Execution
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3 ADDITIONAL HIGH-VALUE REAL AI PROJECTS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl p-6 space-y-6 flex flex-col justify-between border-gray-800 hover:border-brand-orange/40">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs font-mono">GPT-4o + HubSpot</span>
+                            <span class="text-xs text-gray-500 font-mono">System #02</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">AI Lead Intake & Qualification Agent</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Reads incoming web forms, calculates lead score using GPT-4o based on budget and requirements, updates HubSpot CRM, and auto-schedules sales meetings.
+                        </p>
+
+                        <div class="p-3 bg-brand-black rounded-xl border border-gray-800 text-[11px] font-mono text-gray-300 space-y-1">
+                            <div class="text-brand-orange font-bold">// Logic Flow:</div>
+                            <div>Form Submission ➔ GPT-4o Scoring ➔ HubSpot Sync ➔ Calendly Dispatch</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <span class="text-xs text-emerald-400 font-mono"><i class="fa-solid fa-bolt"></i> 10x Faster Qualification</span>
+                        <a href="#contact" class="text-xs font-bold text-brand-orange hover:text-brand-amber transition">Request <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-2xl p-6 space-y-6 flex flex-col justify-between border-gray-800 hover:border-brand-orange/40">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs font-mono">Claude 3.5 + Social APIs</span>
+                            <span class="text-xs text-gray-500 font-mono">System #03</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">Multi-Channel Content Engine</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Transcribes podcasts/audio using Whisper AI, generates structured LinkedIn posts, X threads, and newsletter drafts with Claude 3.5, and auto-posts via webhooks.
+                        </p>
+
+                        <div class="p-3 bg-brand-black rounded-xl border border-gray-800 text-[11px] font-mono text-gray-300 space-y-1">
+                            <div class="text-brand-orange font-bold">// Logic Flow:</div>
+                            <div>Audio File ➔ Whisper Transcript ➔ Claude 3.5 Post Generator ➔ Auto Buffer Publish</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <span class="text-xs text-brand-amber font-mono"><i class="fa-solid fa-bolt"></i> Zero Manual Writing</span>
+                        <a href="#contact" class="text-xs font-bold text-brand-orange hover:text-brand-amber transition">Request <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card rounded-2xl p-6 space-y-6 flex flex-col justify-between border-gray-800 hover:border-brand-orange/40">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs font-mono">Vector DB + WhatsApp</span>
+                            <span class="text-xs text-gray-500 font-mono">System #04</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white">Shopify Order AI Support Agent</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            WhatsApp support bot connected directly to Shopify Admin API and Pinecone Vector DB. Answers tracking queries, store policies, and processes refunds automatically.
+                        </p>
+
+                        <div class="p-3 bg-brand-black rounded-xl border border-gray-800 text-[11px] font-mono text-gray-300 space-y-1">
+                            <div class="text-brand-orange font-bold">// Logic Flow:</div>
+                            <div>WhatsApp Query ➔ Vector Knowledge Lookup ➔ Shopify Tracking API ➔ Instant Reply</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <span class="text-xs text-emerald-400 font-mono"><i class="fa-solid fa-bolt"></i> 80% Support Deflection</span>
+                        <a href="#contact" class="text-xs font-bold text-brand-orange hover:text-brand-amber transition">Request <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE AUTOMATION ROI CALCULATOR -->
+    <section id="roi-calculator" class="py-20 border-t border-gray-800/80 bg-brand-dark/60">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-mono text-brand-orange uppercase tracking-widest font-bold">// CALCULATE YOUR SAVINGS</span>
+                <h2 class="text-3xl font-extrabold text-white mt-2">Interactive Automation ROI Calculator</h2>
+                <p class="text-gray-400 text-sm mt-2">See how much time & money custom AI workflows save your operations every month.</p>
+            </div>
+
+            <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-brand-orange/30 shadow-card-glow">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    
+                    <!-- Calculator Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-gray-300 mb-2">
+                                <span>MONTHLY ORDERS / LEADS PROCESSED:</span>
+                                <span id="volume-val" class="text-brand-orange font-bold text-sm">1,500</span>
+                            </div>
+                            <input type="range" id="volume-slider" min="100" max="10000" step="100" value="1500" oninput="calculateROI()" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-brand-orange">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-gray-300 mb-2">
+                                <span>MANUAL MINUTES PER TASK:</span>
+                                <span id="time-val" class="text-brand-orange font-bold text-sm">6 mins</span>
+                            </div>
+                            <input type="range" id="time-slider" min="1" max="20" step="1" value="6" oninput="calculateROI()" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-brand-orange">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-gray-300 mb-2">
+                                <span>STAFF HOURLY COST ($):</span>
+                                <span id="cost-val" class="text-brand-orange font-bold text-sm">$15 / hr</span>
+                            </div>
+                            <input type="range" id="cost-slider" min="5" max="50" step="1" value="15" oninput="calculateROI()" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-brand-orange">
+                        </div>
+                    </div>
+
+                    <!-- Calculator Results Box -->
+                    <div class="p-6 rounded-2xl bg-brand-black border border-brand-orange/40 text-center space-y-6">
+                        <div>
+                            <div class="text-xs font-mono text-gray-400 uppercase">ESTIMATED HOURS SAVED / MONTH</div>
+                            <div id="hours-saved" class="text-4xl font-extrabold text-brand-orange font-mono mt-1">150 hrs</div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800">
+                            <div class="text-xs font-mono text-gray-400 uppercase">MONTHLY REVENUE SAVED</div>
+                            <div id="dollars-saved" class="text-4xl font-extrabold text-emerald-400 font-mono mt-1">$2,250</div>
+                        </div>
+
+                        <a href="#contact" class="block w-full py-3 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber text-black font-extrabold text-xs uppercase tracking-wider hover:shadow-neon transition">
+                            Claim These Savings Now <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LIVE WORKFLOW NODE EXECUTION SIMULATOR -->
+    <section id="simulator" class="py-20 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-mono text-brand-orange uppercase tracking-widest font-bold">// WORKFLOW ENGINE CANAVS</span>
+                <h2 class="text-3xl font-extrabold text-white mt-2">Interactive Node Simulator</h2>
+                <p class="text-gray-400 text-sm mt-2">Click to run real-time node payload transformations.</p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-3xl border border-gray-800 relative">
+                
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <button onclick="runPipeline()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber text-black font-extrabold text-xs uppercase tracking-wider hover:shadow-neon transition">
+                            <i class="fa-solid fa-play mr-1"></i> Execute Pipeline
+                        </button>
+                        <button onclick="resetPipeline()" class="px-4 py-2.5 rounded-xl glass-card text-xs text-gray-400 hover:text-white transition">
+                            Reset
+                        </button>
+                    </div>
+                    <div id="status-badge" class="text-xs font-mono px-3 py-1 rounded-full bg-brand-black border border-gray-800 text-gray-400">
+                        Status: Ready
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 py-8">
+                    
+                    <div class="glass-card p-5 rounded-2xl border-gray-800" id="sim-node-1">
+                        <div class="w-10 h-10 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold mb-3">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">1. Trigger Webhook</h4>
+                        <p class="text-xs text-gray-400 mt-1">Receive payload from Shopify / Form</p>
+                        <div class="mt-4 text-[10px] font-mono text-brand-orange bg-brand-black p-2 rounded border border-gray-800 truncate" id="sim-node-1-data">
+                            Payload: Waiting...
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-2xl border-gray-800" id="sim-node-2">
+                        <div class="w-10 h-10 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold mb-3">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">2. AI Logic Node</h4>
+                        <p class="text-xs text-gray-400 mt-1">GPT-4 Parse Intent & Score</p>
+                        <div class="mt-4 text-[10px] font-mono text-brand-amber bg-brand-black p-2 rounded border border-gray-800 truncate" id="sim-node-2-data">
+                            Payload: Waiting...
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-2xl border-gray-800" id="sim-node-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold mb-3">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">3. Database Log</h4>
+                        <p class="text-xs text-gray-400 mt-1">Google Sheets / Airtable Insert</p>
+                        <div class="mt-4 text-[10px] font-mono text-emerald-400 bg-brand-black p-2 rounded border border-gray-800 truncate" id="sim-node-3-data">
+                            Payload: Waiting...
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-2xl border-gray-800" id="sim-node-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center font-bold mb-3">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">4. Instant Dispatch</h4>
+                        <p class="text-xs text-gray-400 mt-1">WhatsApp Meta Cloud API Send</p>
+                        <div class="mt-4 text-[10px] font-mono text-emerald-300 bg-brand-black p-2 rounded border border-gray-800 truncate" id="sim-node-4-data">
+                            Payload: Waiting...
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK GRID -->
+    <section id="tech" class="py-20 border-t border-gray-800 bg-brand-dark/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-white">Ecosystem & Stack</h2>
+                <p class="text-gray-400 text-sm mt-2">Tools I use to construct reliable automation architectures.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center gap-2 border-gray-800 hover:border-brand-orange">
+                    <i class="fa-solid fa-diagram-next text-3xl text-brand-orange"></i>
+                    <span class="text-xs font-bold text-gray-200">n8n Workflows</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center gap-2 border-gray-800 hover:border-brand-orange">
+                    <i class="fa-solid fa-puzzle-piece text-3xl text-brand-amber"></i>
+                    <span class="text-xs font-bold text-gray-200">Make.com</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center gap-2 border-gray-800 hover:border-brand-orange">
+                    <i class="fa-solid fa-brain text-3xl text-orange-500"></i>
+                    <span class="text-xs font-bold text-gray-200">OpenAI GPT-4o</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center gap-2 border-gray-800 hover:border-brand-orange">
+                    <i class="fa-brands fa-whatsapp text-3xl text-emerald-400"></i>
+                    <span class="text-xs font-bold text-gray-200">Meta WhatsApp API</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center gap-2 border-gray-800 hover:border-brand-orange">
+                    <i class="fa-brands fa-shopify text-3xl text-emerald-500"></i>
+                    <span class="text-xs font-bold text-gray-200">Shopify Webhooks</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center justify-center gap-2 border-gray-800 hover:border-brand-orange">
+                    <i class="fa-brands fa-python text-3xl text-yellow-400"></i>
+                    <span class="text-xs font-bold text-gray-200">Python Scripts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & CUSTOM PROPOSAL BOOKING -->
+    <section id="contact" class="py-24 border-t border-gray-800/80 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs font-mono uppercase font-bold">
+                        LET'S BUILD YOUR AUTOMATION
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        Ready to eliminate manual tasks forever?
+                    </h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Fill in your bottleneck details to get a free automation audit and custom workflow diagram for your business.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl glass-card border-gray-800 flex items-center justify-center text-brand-orange">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Direct Email</div>
+                                <a href="mailto:alichatspuort@gamil.com" class="text-sm font-bold text-white hover:text-brand-orange transition">alichatspuort@gamil.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl glass-card border-gray-800 flex items-center justify-center text-emerald-400">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">WhatsApp Direct Chat</div>
+                                <a href="https://wa.me/923290233782" target="_blank" class="text-sm font-bold text-white hover:text-emerald-400 transition">+92 329 0233782</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-8 rounded-3xl border border-brand-orange/30 shadow-card-glow">
+                        <form id="contact-form" action="mailto:alichatspuort@gamil.com" method="POST" enctype="text/plain" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-mono text-gray-400 mb-2">YOUR NAME</label>
+                                    <input type="text" name="name" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded-xl bg-brand-black border border-gray-800 text-white text-sm focus:border-brand-orange focus:outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-gray-400 mb-2">EMAIL ADDRESS</label>
+                                    <input type="email" name="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-brand-black border border-gray-800 text-white text-sm focus:border-brand-orange focus:outline-none transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-2">SELECT REQUIRED AUTOMATION</label>
+                                <select name="service" class="w-full px-4 py-3 rounded-xl bg-brand-black border border-gray-800 text-white text-sm focus:border-brand-orange focus:outline-none transition">
+                                    <option>Shopify WhatsApp Order Confirmation System</option>
+                                    <option>AI Lead Qualification & CRM Sync</option>
+                                    <option>Multi-Channel Content Engine</option>
+                                    <option>Custom n8n / Make Workflow Build</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-2">DESCRIBE YOUR BOTTLENECK</label>
+                                <textarea name="message" rows="4" required placeholder="What manual tasks are wasting your hours..." class="w-full px-4 py-3 rounded-xl bg-brand-black border border-gray-800 text-white text-sm focus:border-brand-orange focus:outline-none transition"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber text-black font-extrabold text-sm hover:shadow-neon transition">
+                                Request Custom Proposal <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+
+                        <div id="form-success-msg" class="hidden text-center p-6 rounded-2xl bg-brand-orange/20 border border-brand-orange text-white text-sm font-bold">
+                            <i class="fa-solid fa-circle-check text-2xl text-brand-orange mb-2 block"></i>
+                            Request Received! Ali will review your operational requirements and send a custom workflow design to your email shortly.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800 bg-brand-black text-center text-xs text-gray-500 font-mono">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>© 2026 Ali - AI Automation Architect. Powered by n8n, Make & OpenAI.</div>
+            <div class="flex items-center gap-6">
+                <a href="https://wa.me/923290233782" target="_blank" class="text-emerald-400 hover:underline flex items-center gap-1.5 font-bold">
+                    <i class="fa-brands fa-whatsapp"></i> +92 329 0233782
+                </a>
+                <a href="mailto:alichatspuort@gamil.com" class="text-brand-orange hover:underline">alichatspuort@gamil.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Shopify Console Simulator
+        function triggerShopifyDemo() {
+            const consoleBox = document.getElementById('shopify-demo-console');
+            consoleBox.innerHTML = `
+                <div class="space-y-2 animate-fade-in">
+                    <div class="text-brand-orange font-bold">[SIMULATION RUN] Incoming Order Webhook Received...</div>
+                    <div class="text-gray-300">➔ Extracting Customer Details: "Ali", "0300-1234567"</div>
+                    <div class="text-emerald-400">➔ Row inserted into Google Sheet "Shopify_Orders_2026"</div>
+                    <div class="text-brand-amber font-bold">➔ Meta WhatsApp Message Dispatched! [Status: 200 OK]</div>
+                </div>
+                <div class="pt-4 border-t border-gray-800">
+                    <button onclick="triggerShopifyDemo()" class="w-full py-2.5 rounded-xl bg-brand-orange/20 hover:bg-brand-orange/30 border border-brand-orange/50 text-brand-orange font-bold transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i> Run Again
+                    </button>
+                </div>
+            `;
+        }
+
+        // ROI Calculator
+        function calculateROI() {
+            const volume = parseInt(document.getElementById('volume-slider').value);
+            const minutes = parseInt(document.getElementById('time-slider').value);
+            const cost = parseInt(document.getElementById('cost-slider').value);
+
+            document.getElementById('volume-val').innerText = volume.toLocaleString();
+            document.getElementById('time-val').innerText = minutes + ' mins';
+            document.getElementById('cost-val').innerText = '$' + cost + ' / hr';
+
+            const totalHours = Math.round((volume * minutes) / 60);
+            const totalDollars = Math.round(totalHours * cost);
+
+            document.getElementById('hours-saved').innerText = totalHours + ' hrs';
+            document.getElementById('dollars-saved').innerText = '$' + totalDollars.toLocaleString();
+        }
+
+        // Workflow Simulator
+        function runPipeline() {
+            const status = document.getElementById('status-badge');
+            status.innerText = 'Status: Executing...';
+            status.className = 'text-xs font-mono px-3 py-1 rounded-full bg-brand-orange/20 border border-brand-orange text-brand-orange animate-pulse';
+
+            setTimeout(() => {
+                document.getElementById('sim-node-1').classList.add('border-brand-orange', 'bg-brand-orange/10');
+                document.getElementById('sim-node-1-data').innerText = 'Event: Webhook #1092';
+            }, 400);
+
+            setTimeout(() => {
+                document.getElementById('sim-node-2').classList.add('border-brand-orange', 'bg-brand-orange/10');
+                document.getElementById('sim-node-2-data').innerText = 'GPT-4 Score: 95/100';
+            }, 1000);
+
+            setTimeout(() => {
+                document.getElementById('sim-node-3').classList.add('border-brand-orange', 'bg-brand-orange/10');
+                document.getElementById('sim-node-3-data').innerText = 'Sheet Sync: Logged';
+            }, 1600);
+
+            setTimeout(() => {
+                document.getElementById('sim-node-4').classList.add('border-brand-orange', 'bg-brand-orange/10');
+                document.getElementById('sim-node-4-data').innerText = 'WhatsApp: Sent';
+
+                status.innerText = 'Status: Success';
+                status.className = 'text-xs font-mono px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-400';
+            }, 2200);
+        }
+
+        function resetPipeline() {
+            document.getElementById('status-badge').innerText = 'Status: Ready';
+            document.getElementById('status-badge').className = 'text-xs font-mono px-3 py-1 rounded-full bg-brand-black border border-gray-800 text-gray-400';
+
+            [1, 2, 3, 4].forEach(i => {
+                document.getElementById(`sim-node-${i}`).className = 'glass-card p-5 rounded-2xl border-gray-800';
+                document.getElementById(`sim-node-${i}-data`).innerText = 'Payload: Waiting...';
+            });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('form-success-msg').classList.remove('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
